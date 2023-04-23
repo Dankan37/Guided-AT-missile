@@ -7,3 +7,4 @@
 #define tx_time 1003
 #define tx_lock 1004
 #define tx_eta 1005
+#define borderSize 0.21

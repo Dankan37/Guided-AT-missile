@@ -1,4 +1,6 @@
 #define txtSize 0.7
+#define borderSize 0.21
+
 class RscPicture;
 class RscText;
 class ctrlMapEmpty;
@@ -8,13 +10,14 @@ class D37_seeker {
     onMouseMoving = "_this call D37AT_fnc_handleMouse";
     
     class controls {
+        //["0.15 * safezoneW + safezoneX","0.15 * safezoneH + safezoneY","0.7 * safezoneW","0.7 * safezoneH"]
         class seeker_head: RscPicture
         {
             idc = 1200;
             text = "D37_guideAT\pictures\targetCross.paa";
             //style = ST_MULTI + ST_TITLE_BAR + ST_KEEP_ASPECT_RATIO;
-            x = 0.5 - txtSize / 2; // * safezoneW + safezoneX;
-            y = 0.5 - txtSize / 2; // * safezoneH + safezoneY;
+            x = (0.5 - txtSize/2) * safezoneW + safezoneX; // * safezoneW + safezoneX;
+            y = (0.5 - txtSize/2) * safezoneH + safezoneY; // * safezoneH + safezoneY;
             w = txtSize;
             h = txtSize;
 
@@ -24,22 +27,24 @@ class D37_seeker {
 
         class Border_Left: RscText {
             idc = -1;
-            x = -0.5; 
-            y = safezoneY;
-            w = (safezoneW / 2 - 0.5);
+            x = 0 * safezoneW + safezoneX; 
+            y = 0 * safezoneH + safezoneY
+            w = borderSize * safezoneW;
             h = safezoneH;
             colorBackground[] = {0,0,0,1};
             colorText[] = {1, 1, 1, 1};
         };
+
         class Sidebar_Right: RscText {
             idc = -1;
-            x = 1; 
-            y = safezoneY;
-            w = (safezoneW / 2 - 0.5);
+            x = (1 - borderSize) * safezoneW + safezoneX; 
+            y = 0 * safezoneH + safezoneY;
+            w = borderSize * safezoneW;
             h = safezoneH;
             colorBackground[] = {0,0,0,1};
             colorText[] = {1, 1, 1, 1};
         };
+
 
         class seeker_lock: RscPicture
         {

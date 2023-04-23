@@ -8,7 +8,7 @@ private _action = toLower _action;
 private _arr = missionNamespace getVariable ["D37AT_weaponsArr", ['M_Titan_MIL_AP','M_Titan_MIL_AT']];
 switch (_action) do {
 	case "add": {
-		_arr pushBack _ammoName;
+		_arr pushBackUnique _ammoName;
 	};
 	case "remove": {
 		private _index = _arr find _ammoName;

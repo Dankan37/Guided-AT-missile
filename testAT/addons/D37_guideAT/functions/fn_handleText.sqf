@@ -17,10 +17,19 @@ _txLock ctrlSetFontHeight 0.05;
 
 //Date
 date params ["_year", "_month", "_day", "_hours", "_minutes"];
-_timeMessage = str _day + "/" + str _month + str _year + " - " + str _hours + ":" + str _minutes;
+//Fix the date to a nicer format, just do it idc about perf
+private _strHours = str _hours;
+if(_hours < 10) then {
+	_strHours = "0" + str _hours;
+};
+private _strMinutes = str _minutes;
+if(_minutes < 10) then {
+	_strMinutes = "0" + str _minutes;
+};
+_timeMessage = str _day + "/" + str _month + "/" + str _year + " - " + _strHours + ":" + _strMinutes;
 _txDate ctrlSetText _timeMessage;
 
-private _timeNow = time;
+private _timeNow = _projectile getVariable ["D37_launchTime", time];
 private _t = 0;
 while {alive _projectile and dialog} do {
 	private _thermal 	= uiNamespace getVariable ["_thermalState", true];

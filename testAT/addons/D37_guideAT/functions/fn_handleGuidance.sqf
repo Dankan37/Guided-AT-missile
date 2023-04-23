@@ -9,13 +9,13 @@ private _vDirProj	= vectorDir _projectile;
 private _sideVector = _v vectorCrossProduct _vUpProj;
 private _localUpVector = _v vectorCrossProduct _sideVector;
 
-//Up vector at the target 
+//Up vector at the target  - technically not needed to normalize the vectors
 private _vDirTgt = vectorNormalized _v;
 private _vUpTgt = vectorNormalized _localUpVector;
 
 //Handle going upward
 private _diff = [0.5, 0.5] vectorDiff getMousePosition;
-if((_diff # 1) > 0.1) then {
+if((_diff # 1) > 0.3) then {
 	_vDirTgt set [2, _vDirTgt # 2 + (_diff # 1 * 0.5)];
 };
 
@@ -31,7 +31,6 @@ private _id = ["D37_handleMissileRot", "onEachFrame", {
 //Wait for the missile to have manouvered 
 private _timeZero = time;
 waitUntil {
-	_angle = _vDirTgt vectorCos (vectorDir _projectile);
 	!(alive _projectile) or (time - _timeZero) > _timeManouver
 };
 [_id, "onEachFrame"] call BIS_fnc_removeStackedEventHandler;

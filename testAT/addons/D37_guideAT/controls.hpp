@@ -6,6 +6,7 @@ class RscText;
 class ctrlMapEmpty;
 class D37_seeker {
     idd = 3737;
+    movingEnable = false;
 
     onMouseMoving = "_this call D37AT_fnc_handleMouse";
     
@@ -33,6 +34,7 @@ class D37_seeker {
             h = safezoneH;
             colorBackground[] = {0,0,0,1};
             colorText[] = {1, 1, 1, 1};
+            movingEnable = false;
         };
 
         class Sidebar_Right: RscText {
@@ -43,6 +45,7 @@ class D37_seeker {
             h = safezoneH;
             colorBackground[] = {0,0,0,1};
             colorText[] = {1, 1, 1, 1};
+            movingEnable = false;
         };
 
 

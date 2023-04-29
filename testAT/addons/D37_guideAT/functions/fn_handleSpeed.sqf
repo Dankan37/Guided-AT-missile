@@ -43,7 +43,7 @@ while {alive _projectile} do {
 	};
 
 	if(_t > _graceTime) exitWith {};
-	sleep 0.03; //A faster refresh rate improves consitency (and accuracy)
+	sleep 0.025; //A faster refresh rate improves consitency (and accuracy)
 };
 
 true;

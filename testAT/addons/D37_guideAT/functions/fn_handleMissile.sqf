@@ -41,6 +41,18 @@ private _wordToScreenPos = []; //Position on the screen of the current target
 private _targetOffset = [0,0,0]; //Offset from target center 
 private _targetArr = []; 
 
+//Fast cleanup when the missile dies
+_projectile setVariable ["_projAttachedCamera", _camera, true];
+_projectile addEventHandler ["Explode", {
+	//_camera is saved to uiNamespace meaning if you are using another projectile it's overwritten
+	_camera = uiNamespace getVariable "_mainCamera";
+	_attachedCam = _projectile getVariable "_projAttachedCamera";
+
+	if(_camera == _attachedCam) then {
+		[_camera] call D37AT_fnc_cleanEffectsCam;
+	};
+}];
+
 //Effects
 [] call D37AT_fnc_handleEffects;
 

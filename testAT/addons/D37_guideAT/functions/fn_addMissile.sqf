@@ -5,7 +5,7 @@ if(isNil "_action") then {
 };
 private _action = toLower _action;
 
-private _arr = missionNamespace getVariable ["D37AT_weaponsArr", ['M_Titan_MIL_AP','M_Titan_MIL_AT']];
+private _arr = missionNamespace getVariable ["D37AT_weaponsArr", []];
 switch (_action) do {
 	case "add": {
 		_arr pushBackUnique _ammoName;
